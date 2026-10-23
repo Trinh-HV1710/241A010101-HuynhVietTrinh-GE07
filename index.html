@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tài Chính Cá Nhân - EG07</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu điều hướng tích hợp các bài tập trước và trang chính -->
+    <nav class="navbar">
+        <div class="logo">💰 FinanceTracker (EG07)</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Trang Chủ</a>
+            <a href="https://ntan-tdt.github.io/ltw.vhu.io/tr_chuong3.html" target="_blank">Bài 40</a>
+            <a href="https://ntan-tdt.github.io/ltw.vhu.io/tr_chuong4.html" target="_blank">Bài 41</a>
+            <a href="https://trinh-hv1710.github.io/241a010101-42/" target="_blank">Bài 42</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Phần thông tin sinh viên -->
+        <header class="profile-header">
+            <img src="images/avatar/avatar.jpg" alt="Avatar" class="avatar">
+            <h1>Hệ Thống Quản Lý Tài Chính Cá Nhân</h1>
+            <p>Họ và tên: Huỳnh Việt Trinh | Mã SV: 241a010101 | Đề số: EG07</p>
+        </header>
+
+        <!-- Bài 1: Thẻ hiển thị tổng quan tài chính -->
+        <div class="dashboard-cards">
+            <div class="card income-card">
+                <h3>Tổng Thu (Income)</h3>
+                <p id="total-income" class="card-value">0 đ</p>
+            </div>
+            <div class="card expense-card">
+                <h3>Tổng Chi (Expense)</h3>
+                <p id="total-expense" class="card-value">0 đ</p>
+            </div>
+            <div class="card balance-card">
+                <h3>Số Dư Hiện Tại (Balance)</h3>
+                <p id="current-balance" class="card-value">0 đ</p>
+            </div>
+        </div>
+
+        <!-- Bài 3: Thanh tiến trình (Progress Bar) tóm tắt tỷ lệ thu chi -->
+        <div class="progress-section">
+            <h3>Tỷ Lệ Chi tiêu / Thu Nhập</h3>
+            <div class="progress-bar-container">
+                <div id="expense-progress" class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <span id="progress-text">0% thu nhập đã chi tiêu</span>
+        </div>
+
+        <!-- Main Grid: Form thêm giao dịch & Bảng lịch sử -->
+        <div class="main-grid">
+            <!-- Bài 2: Form thêm giao dịch mới -->
+            <div class="form-container">
+                <h2>Thêm Giao Dịch Mới</h2>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="trans-type">Loại giao dịch:</label>
+                        <select id="trans-type" required>
+                            <option value="income">Khoản Thu (+)</option>
+                            <option value="expense">Khoản Chi (-)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="trans-name">Tên danh mục / Mô tả:</label>
+                        <input type="text" id="trans-name" placeholder="Ví dụ: Lương tháng, Tiền điện..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trans-amount">Số tiền (VNĐ):</label>
+                        <input type="number" id="trans-amount" placeholder="Nhập số tiền > 0" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trans-date">Ngày tháng:</label>
+                        <input type="date" id="trans-date" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Thêm Giao Dịch</button>
+                    <p id="form-error" class="error-msg"></p>
+                </form>
+            </div>
+
+            <!-- Bài 1 & 4: Bảng lịch sử giao dịch và XSS Prevention -->
+            <div class="history-container">
+                <h2>Lịch Sử Giao Dịch</h2>
+                <div class="table-responsive">
+                    <table id="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Mô tả</th>
+                                <th>Loại</th>
+                                <th>Số tiền</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-list">
+                            <!-- Dữ liệu render động bằng JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Nguyễn Văn A - 21000123. Đề thi Lập trình Web - EG07.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
